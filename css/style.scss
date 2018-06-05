@@ -1,0 +1,213 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #fdfcf6;
+$subColor: #bea300;
+$keyColor: #14c0c9;
+$fontColor: #4c4c4c;
+
+
+/* Base
+------------------------------------------------------------*/
+html{ font-size: 62.5%; }
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family:$baseFontFamily;
+  line-height:1.6;
+  letter-spacing: 0.1em;
+  background-color: $baseColor;
+}
+
+a {
+  @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.fa:before {
+  padding-right: .5rem;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Header
+------------------------------------------------------------*/
+header {
+  .icon {
+    background-image: url("../images/Mt.fuji.jpg");
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+/* Contents
+------------------------------------------------------------*/
+// Common Styles
+main {
+  width:90%;
+  margin: 50px auto;
+}
+
+section {
+  margin-bottom: 5%;
+  .container {
+    @extend .block-center;
+  }
+  h2 {
+    @extend .abel;
+    font-size: 2.6rem;
+    @extend .uppercase;
+  }
+}
+
+// contents
+#contents {
+    h2 {
+    margin: 5%;
+  }
+  .contents-box {
+    width: 100%;                  // widthを100%にして1列に1つ表示（つまり縦に並ぶ）
+    float: left;
+    height: 100%;
+    margin-bottom: 30px;
+    a {
+      display: block;
+      position: relative;
+      .contents-inner {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        height: 40%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: #FFF;
+        div {
+          position: absolute;
+          height: 100%;
+          line-height: 100%;
+          width: 100%;
+        }
+          .text-center {
+            position: relative;
+          
+            h3 {
+              font-size: 1.3rem;
+              margin: 0 0 2%;
+              font-weight: bold;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 100%;
+            }
+          }
+        .button {
+          margin: 1% auto 0 auto;
+          text-align: center;
+          padding: 1% 0;
+          width: 60%;
+          display: block;
+          color: #FFF;
+          font-weight: bold;
+          background-color: $keyColor;
+          @extend .abel;
+          @extend .uppercase;
+          @include border-radius(4px);
+          font-size: 1.3rem;
+        }
+      }
+    }
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// Contact
+#contact {
+  a {
+    display: block;
+    margin: 2rem auto 30px;
+    padding: 20px 0;
+    width: 100%;
+    color: #FFF;
+    background-color: $keyColor;
+    text-align: center;
+    @include border-radius(4px);
+    &:hover {
+      background-color: darken($keyColor, 10%);
+    }
+  }
+}
+
+// desktop
+@media (min-width: 769px) {
+  header .icon{
+    height: 500px;
+  }
+  section h2 {
+    font-size: 3.2rem;
+  }
+  // contents
+  #contents {
+    .contents-box {
+      width: (100% / 3);         // widthを33%にして1列に3つ表示（つまり横に並ぶ）
+      margin-bottom: 0;
+      a {
+        margin: 0 10px;
+        .contents-inner {
+          .button-readmore {
+            &:hover {
+              background-color: darken($keyColor, 10%);
+            }
+          }
+        }
+        &:hover {
+          .works-box-inner {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  #contact {
+    a {
+      width: 30%;
+    }
+  }
+}
